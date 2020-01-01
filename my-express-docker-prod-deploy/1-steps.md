@@ -2,19 +2,15 @@
 
 - Exec into Express container
 
-  ` docker exec -it f44c008 sh
-  `
-  ` curl http://localhost:3000
-  `
+  ` docker exec -it f44c008 sh `
+  
+  ` curl http://localhost:3000 `
 
-  ` curl -X POST http://localhost:3000
-  `
+  ` curl -X POST http://localhost:3000 `
 
-  ` curl http://localhost:3000
-  `
+  ` curl http://localhost:3000 `
 
-  ` curl http://localhost:3000/b72c37a0-a36a-11e9-a848-f3d8c835f79c
-  `
+  ` curl http://localhost:3000/b72c37a0-a36a-11e9-a848-f3d8c835f79c `
 
   - first command returns an empty list. The second command saves the headers of the request to the database and returns them. The third command returns the list with the id of the first as the only entry. And finally, the fourth command returns the headers from the post, by using the id that was returned by the list.
 
@@ -28,15 +24,12 @@
 
   - 1st: touch ups to backend:
 
-      ` touch docker-build.sh
-      `
+    ` touch docker-build.sh `
 
-      ` docker login
-      `
+    ` docker login `
 
   - add the image of the API to Docker Hub:
 
-  ` chmod +x docker-build.sh
+  ` chmod +x docker-build.sh `
 
-    ./docker-build.sh 
-    `
+   ` ./docker-build.sh `

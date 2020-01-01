@@ -1,102 +1,78 @@
 
 
-    ` nvm use 10.14.2
-    `
+  ` nvm use 12.8.1 `
 
 
-    ` create-react-app front-end-react-prod-deploy
-    `
+  ` create-react-app front-end-react-prod-deploy `
 
-    ` cd create-react-app front-end-react-prod-deploy
-    `
+  ` cd create-react-app front-end-react-prod-deploy `
 
-    ` npm start
-    `
+  ` npm start `
 
-    ` touch Dockerfile
-    `
+  ` touch Dockerfile `
 
-    ` touch docker-compose.yml
-    `
+  ` touch docker-compose.yml `
 
+  ` touch nginx.conf `
 
-    ` touch nginx.conf
-    `
+  ` npm run build `
 
+  ` docker-compose build `
 
-    ` npm run build
-    `
+  ` docker-compose up `
 
-    ` docker-compose build
-    `
+  `  http://localhost `
 
-    ` docker-compose up
-    `
+  - test connection to API => exec into backend API:
 
-    `  http://localhost
-    `
+   `  docker exec -it f44c008 sh `
+        
+   ` curl http://localhost:3000 `
 
-    - test connection to API => exec into backend API:
+   ` curl -X POST http://localhost:3000 `
 
-        `  docker exec -it f44c008 sh
-        `
-        ` curl http://localhost:3000
-        `
+   ` curl http://localhost:3000 `
 
-        ` curl -X POST http://localhost:3000
-        `
+   ` curl http://localhost:3000/b72c37a0-a36a-11e9-a848-f3d8c835f79c `
 
-        ` curl http://localhost:3000
-        `
-
-        ` curl http://localhost:3000/b72c37a0-a36a-11e9-a848-f3d8c835f79c
-        `
-
-    - working => BUT, not hooked up to the frontend yet:
+  - working => BUT, not hooked up to the frontend yet:
 
 
-      ` touch src/List.js
+    ` touch src/List.js `
 
-        touch src/Post.js
-        `
+    ` touch src/Post.js `
 
     - proxy the API by changing the `nginx.conf`
 
     - then:
 
-       `  npm run build
-        `
+      ` npm run build `
 
-        ` docker-compose build
-        `
+      ` docker-compose build `
 
-        ` docker-compose up
-        `
+      ` docker-compose up `
 
 
-        ` http://localhost/:80
-        `//returns headers saved to DB
+      ` http://localhost/:80 `//returns headers saved to DB
 
      - So far we have:
 
 
-        - a REST-like API attachedm to a database, a React frontend attached to the API => we serve them both with an Nginx server => CORS is not an issue
+        - a REST-like API attached to a database, a React frontend attached to the API => we serve them both with an Nginx server => CORS is not an issue
         + similar to what will actually be run in the cloud
 
 
-....cont...  
+- ....cont...  
 
   https://rlksr.com/2018/05/25/dockerizing-the-world/
 
-     `
-      touch docker-build.sh
-      `
+      ` touch docker-build.sh `
 
-      ` docker login
+      ` docker login `
 
-        chmod +x docker-build.sh
+      ` chmod +x docker-build.sh `
 
-        ./docker-build.sh
-      `
+      ` ./docker-build.sh `
+      
 
       - image for the frontend is now available from anywhere
