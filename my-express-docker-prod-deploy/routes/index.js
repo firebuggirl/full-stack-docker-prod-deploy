@@ -3,6 +3,7 @@ const router = express.Router();
 const Redis = require('ioredis');
 const uuidv1 = require('uuid/v1');
 
+//boost performance w/ caching
 const client = new Redis(6379, 'redis');
 
 /* GET just of posted headers */
